@@ -85,11 +85,12 @@ export default {
   <div class="hero min-h-screen bg-base-200">
     <div class="hero-content flex-col lg:flex-row-reverse">
       <div class="text-center lg:text-left md:ml-12">
-        <h1 class="text-5xl font-bold">Chat now!</h1>
+        <h1 class="text-5xl font-bold">PrivChat</h1>
+        <h2 class="text-2xl font-bold mt-2">Chat Now!</h2>
         <p class="py-6">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
-          id nisi.
+          With PrivChat you can create chats where no conversation is saved. We
+          do not use cookies or ask for information. Just create a chat and
+          share the code with other people, or use a code to join a chat.
         </p>
       </div>
       <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
