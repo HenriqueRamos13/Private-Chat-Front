@@ -39,6 +39,7 @@ export default {
       chatId: "",
       text: "",
       messages: [],
+      info: false,
     };
   },
   beforeCreate: function () {
@@ -100,6 +101,32 @@ export default {
           do not use cookies or ask for information. Just create a chat and
           share the code with other people, or use a code to join a chat.
         </p>
+        <div class="collapse z-10" @click="() => (this.info = !info)">
+          <input type="checkbox" />
+          <div class="prose collapse-title text-xl font-medium">
+            <b>More info <b v-if="info">↑</b><b v-else>↓</b></b>
+          </div>
+          <div class="collapse-content">
+            <p>
+              We are open source:
+              <a
+                class="link-hover"
+                href="https://github.com/HenriqueRamos13/Private-Chat-Back"
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                >Back</a
+              >
+              |
+              <a
+                class="link-hover"
+                href="https://github.com/HenriqueRamos13/Private-Chat-Front"
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                >Front</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
       <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
         <div class="card-body items-center flex flex-col" v-if="!chat">
@@ -117,7 +144,12 @@ export default {
 
           <form
             class="w-[100%] bottom-4 self-center"
-            @submit="joinChat(this.chatId)"
+            @submit="
+              (e) => {
+                e.preventDefault();
+                joinChat(chatId);
+              }
+            "
           >
             <input
               type="text"
