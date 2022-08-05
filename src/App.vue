@@ -14,7 +14,6 @@ export default {
     },
     joinChat: function (id) {
       SocketioService.joinChat(id);
-      this.chat = id;
     },
     submit: function (e) {
       e.preventDefault();
@@ -59,7 +58,6 @@ export default {
     });
 
     this.socket.on("left", () => {
-      alert("leftt");
       this.messages.push({
         text: "Someone left the chat",
         divider: true,
@@ -74,6 +72,16 @@ export default {
       });
       this.scroll();
     });
+
+    this.socket.on("roomNotExist", () => {
+      alert("This room does not exist");
+      this.text = "";
+      this.chat = "";
+    });
+
+    this.socket.on("roomFound", (room) => {
+      this.chat = room;
+    });
   },
   beforeUnmount() {
     SocketioService.disconnect();
@@ -82,7 +90,7 @@ export default {
 </script>
 
 <template>
-  <div class="hero min-h-screen bg-base-200">
+  <main class="hero min-h-screen bg-base-200">
     <div class="hero-content flex-col lg:flex-row-reverse">
       <div class="text-center lg:text-left md:ml-12">
         <h1 class="text-5xl font-bold">PrivChat</h1>
@@ -188,7 +196,7 @@ export default {
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style>

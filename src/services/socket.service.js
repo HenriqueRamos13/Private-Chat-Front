@@ -6,7 +6,10 @@ class SocketioService {
   constructor() {}
 
   setupSocketConnection() {
-    this.socket = io("ws://localhost:3000");
+    this.socket = io("wss://privchat-back.herokuapp.com", {
+      // this.socket = io("ws://localhost:3000", {
+      transports: ["websocket"],
+    });
   }
 
   disconnect() {
